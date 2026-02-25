@@ -1,0 +1,38 @@
+{
+  "name": "SongRequest",
+  "type": "object",
+  "properties": {
+    "song_id": {
+      "type": "string",
+      "description": "Reference to the requested song"
+    },
+    "song_title": {
+      "type": "string",
+      "description": "Title of the requested song"
+    },
+    "requester_name": {
+      "type": "string",
+      "description": "Name of the person requesting"
+    },
+    "message": {
+      "type": "string",
+      "description": "Optional message from the requester"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "playing",
+        "played",
+        "declined"
+      ],
+      "default": "pending",
+      "description": "Status of the request"
+    }
+  },
+  "required": [
+    "song_id",
+    "song_title",
+    "requester_name"
+  ]
+}

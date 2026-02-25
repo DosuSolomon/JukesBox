@@ -1,0 +1,52 @@
+{
+  "name": "Song",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Song title"
+    },
+    "artist": {
+      "type": "string",
+      "description": "Artist or band name"
+    },
+    "genre": {
+      "type": "string",
+      "enum": [
+        "pop",
+        "rock",
+        "hiphop",
+        "rnb",
+        "jazz",
+        "blues",
+        "country",
+        "electronic",
+        "reggae",
+        "afrobeats",
+        "latin",
+        "classical",
+        "folk",
+        "soul",
+        "other"
+      ],
+      "description": "Music genre"
+    },
+    "album": {
+      "type": "string",
+      "description": "Album name"
+    },
+    "is_available": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the song is currently available for requests"
+    },
+    "play_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of times this song has been requested"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}
