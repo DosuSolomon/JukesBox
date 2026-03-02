@@ -12,11 +12,11 @@ export default defineConfig({
     },
   },
   server: {
-    host: '192.168.42.97',
+    host: '0.0.0.0',
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://192.168.42.97:3001',
+        target: process.env.VITE_API_PROXY_TARGET || 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
       },
