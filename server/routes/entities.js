@@ -10,11 +10,28 @@ const parseQueryParams = (query) => {
   let where = {};
   let order = [['createdAt', 'DESC']];
   
-  // Parse filter - expects JSON string like: {"status":"pending"}
+  // Map frontend field names (underscored) to Sequelize field names (camelCase)
+  const fieldNameMap = {
+    'created_date': 'createdAt',
+    'play_count': 'playCount',
+    'is_available': 'isAvailable',
+    'song_id': 'songId',
+    'requester_name': 'requesterName',
+    'song_title': 'songTitle',
+    'status': 'status'
+  };
+  
+  // Parse filter - expects JSON string like: {"status":"pending", "is_available":true}
   if (filter) {
     try {
       const filterObj = JSON.parse(filter);
-      where = { ...where, ...filterObj };
+      // Convert underscored field names to camelCase
+      const mappedWhere = {};
+      for (const [key, value] of Object.entries(filterObj)) {
+        const mappedKey = fieldNameMap[key] || key;
+        mappedWhere[mappedKey] = value;
+      }
+      where = { ...where, ...mappedWhere };
     } catch (e) {
       console.warn('Invalid filter JSON:', filter);
     }
@@ -25,14 +42,7 @@ const parseQueryParams = (query) => {
     const sortField = sort.replace(/^-/, '');
     const sortOrder = sort.startsWith('-') ? 'DESC' : 'ASC';
     // Map base44 field names to DB field names
-    const fieldMap = {
-      'created_date': 'createdAt',
-      'play_count': 'playCount',
-      'is_available': 'isAvailable',
-      'song_id': 'songId',
-      'requester_name': 'requesterName'
-    };
-    const dbField = fieldMap[sortField] || sortField;
+    const dbField = fieldNameMap[sortField] || sortField;
     order = [[dbField, sortOrder]];
   }
   

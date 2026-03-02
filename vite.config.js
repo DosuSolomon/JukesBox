@@ -12,12 +12,11 @@ export default defineConfig({
     },
   },
   server: {
-    host: '0.0.0.0',
+    host: '192.168.42.97',
     port: 5173,
-    allowedHosts: ['temitopeserentainer.onrender.com'],
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'http://192.168.42.97:3001',
         changeOrigin: true,
         secure: false,
       },

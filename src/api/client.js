@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://192.168.42.97:3001';
 
 class ApiClient {
   constructor(baseUrl = API_BASE_URL) {
