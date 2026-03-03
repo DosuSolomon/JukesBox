@@ -1,0 +1,23 @@
+services:
+  # Backend Web Service - deploys from server/ folder
+  - name: jukesbox-server
+    type: web
+    region: oregon
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: postgresql://jukesbox:nIc6JL4V2hZXIaw00spaMutWdhwFZ8wR@dpg-d6jd7h95pdvs73epu97g-a/jukesbox
+      - key: POSTGRES_DB
+        value: jukesbox
+      - key: POSTGRES_USER
+        value: jukesbox
+      - key: POSTGRES_PASSWORD
+        value: nIc6JL4V2hZXIaw00spaMutWdhwFZ8wR
+      - key: POSTGRES_HOST
+        value: dpg-d6jd7h95pdvs73epu97g-a
+      - key: POSTGRES_PORT
+        value: 5432
