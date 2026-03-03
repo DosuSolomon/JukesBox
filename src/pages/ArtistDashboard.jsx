@@ -59,7 +59,7 @@ export default function ArtistDashboard() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900">Artists Dashboard</h1>
+          <h1 className="text-4xl font-bold text-gray-900">Artist Dashboard</h1>
           <Badge className="bg-purple-600 text-white">
             <Bell className="w-4 h-4 mr-1" />
             {requests.length} Pending
