@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import path from 'path'
 
 // Production API URL - defaults to same origin for deployed app
-const apiUrl = process.env.VITE_API_URL || 'https://temitopeserentainer.onrender.com'
+const apiUrl = process.env.VITE_API_URL || 'https://jukesbox-server.onrender.com'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -20,7 +20,7 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 5173,
-    allowedHosts: ['temitopeserentainer.onrender.com', 'temitopeserentainer.base44.app'],
+    allowedHosts: ['jukesbox.onrender.com', 'jukesbox.base44.app'],
     proxy: {
       '/api': {
         target: process.env.VITE_API_PROXY_TARGET || 'http://localhost:3001',
