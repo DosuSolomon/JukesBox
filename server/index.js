@@ -12,8 +12,19 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
-app.use(cors());
+// CORS configuration - allow frontend domain
+const corsOptions = {
+  origin: [
+    'https://temitopeserentainer.onrender.com',
+    'https://temitopeserentainer.base44.app',
+    'https://jukesbox.onrender.com',
+    'https://jukesbox.base44.app',
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Request logging middleware

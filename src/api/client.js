@@ -16,7 +16,9 @@ class ApiClient {
   }
 
   async request(endpoint, options = {}) {
-    const url = `${this.baseUrl}${endpoint}`;
+    // Fix double slashes - remove trailing slash from baseUrl and ensure single slash
+    const baseUrl = this.baseUrl.replace(/\/$/, '');
+    const url = `${baseUrl}${endpoint}`;
     
     const headers = {
       'Content-Type': 'application/json',
